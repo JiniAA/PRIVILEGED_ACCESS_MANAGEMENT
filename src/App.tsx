@@ -17,6 +17,7 @@ import DeleteLogs from "./pages/DeleteLogs";
 import NotFound from "./pages/NotFound";
 import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/Login_Page";
+import UserManagementForm from "./pages/UserManagementForm";
 
 const queryClient = new QueryClient();
 
@@ -30,6 +31,7 @@ const App = () => (
           <Route path="/" element={<LoginPage />} />
           <Route path="/home-page" element={<HomePage />} />
           <Route path="/submit-request" element={<SubmitRequest />} />
+          <Route path="/user-management" element={<UserManagementForm />} />
           <Route path="/my-requests" element={<MyRequests />} />
           <Route path="/manage-requests" element={<ManageRequests />} />
           <Route path="/approval-inbox" element={<ApprovalInbox />} />

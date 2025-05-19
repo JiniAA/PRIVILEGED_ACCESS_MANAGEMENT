@@ -58,6 +58,13 @@ const HomePage = () => {
             icon={ListChecks}
             to="/manage-requests"
           />
+
+          <Tile
+            title=" User Management"
+            description="Manage User Data"
+            icon={Users}
+            to="/user-management"
+          />
         </Section>
 
         <Section
