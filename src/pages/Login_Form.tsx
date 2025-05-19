@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
@@ -13,8 +14,15 @@ interface FormData {
   rememberMe: boolean;
 }
 
+interface UserRecord {
+  USER_ID: string;
+  PASSWORDS: string;
+  [key: string]: any;
+}
+
 const LoginForm = () => {
   const { toast } = useToast();
+  const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState<FormData>({
     userid: "",
@@ -27,37 +35,33 @@ const LoginForm = () => {
   });
 
   const validateuserid = (userid: string) => {
-    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return re.test(userid);
+    return userid.trim().length > 0;
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    setFormData({
-      ...formData,
+    setFormData((prev) => ({
+      ...prev,
       [name]: value,
-    });
+    }));
 
     if (errors[name as keyof typeof errors]) {
-      setErrors({
-        ...errors,
+      setErrors((prev) => ({
+        ...prev,
         [name]: "",
-      });
+      }));
     }
   };
 
   const handleCheckboxChange = (checked: boolean) => {
-    setFormData({
-      ...formData,
+    setFormData((prev) => ({
+      ...prev,
       rememberMe: checked,
-    });
+    }));
   };
 
   const validateForm = () => {
-    const newErrors = {
-      userid: "",
-      password: "",
-    };
+    const newErrors = { userid: "", password: "" };
     let isValid = true;
 
     if (!formData.userid) {
@@ -83,25 +87,38 @@ const LoginForm = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (!validateForm()) {
-      return;
-    }
+    if (!validateForm()) return;
 
     setIsLoading(true);
 
     try {
-      await new Promise((resolve) => setTimeout(resolve, 1500));
+      const response = await fetch("/userdata.json");
+      const users: UserRecord[] = await response.json();
 
-      toast({
-        title: "Login successful",
-        description: "Welcome back to your account!",
-      });
+      const matchedUser = users.find(
+        (user) =>
+          user.USER_ID === formData.userid &&
+          user.PASSWORDS === formData.password
+      );
 
-      console.log("Login with:", formData);
+      if (matchedUser) {
+        toast({
+          title: "Login successful",
+          description: "Welcome back to your account!",
+        });
+
+        navigate("/home-page");
+      } else {
+        toast({
+          title: "Login failed",
+          description: "Invalid User ID or Password",
+          variant: "destructive",
+        });
+      }
     } catch (error) {
       toast({
-        title: "Login failed",
-        description: "Please check your credentials and try again.",
+        title: "Error",
+        description: "Failed to read user data.",
         variant: "destructive",
       });
     } finally {

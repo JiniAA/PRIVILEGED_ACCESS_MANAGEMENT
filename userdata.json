@@ -1,0 +1,47 @@
+[
+  {
+    "USER_ID": "DKJAJITH",
+    "F_NAME": "Jini",
+    "L_NAME": "Ajith",
+    "PASSWORDS": "Pass@1234",
+    "USER_TYPE": "admin",
+    "MANAGER": "DKEMARTI",
+    "LAST_LOGGEDIN": null
+  },
+  {
+    "USER_ID": "DKDBUDAT",
+    "F_NAME": "Devaprakash",
+    "L_NAME": "Budati",
+    "PASSWORDS": "Secure#5678",
+    "USER_TYPE": "user",
+    "MANAGER": "DKDEDVIN",
+    "LAST_LOGGEDIN": null
+  },
+  {
+    "USER_ID": "DKVADARI",
+    "F_NAME": "Vasu",
+    "L_NAME": "Adari",
+    "PASSWORDS": "MyPwd$91011",
+    "USER_TYPE": "manager",
+    "MANAGER": "DKEMARTI",
+    "LAST_LOGGEDIN": null
+  },
+  {
+    "USER_ID": "DKDEDVIN",
+    "F_NAME": "Dayana",
+    "L_NAME": "Edvin",
+    "PASSWORDS": "Hello@2023",
+    "USER_TYPE": "user",
+    "MANAGER": "DKVADARI",
+    "LAST_LOGGEDIN": null
+  },
+  {
+    "USER_ID": "DKEMARTI",
+    "F_NAME": "Evan",
+    "L_NAME": "Martin",
+    "PASSWORDS": "Login#4455",
+    "USER_TYPE": "admin",
+    "MANAGER": "DKJAJITH",
+    "LAST_LOGGEDIN": null
+  }
+]
