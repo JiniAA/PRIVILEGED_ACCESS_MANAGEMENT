@@ -1,10 +1,9 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Index from "./pages/Index";
+import Index from "./pages/HomePage";
 import SubmitRequest from "./pages/SubmitRequest";
 import MyRequests from "./pages/MyRequests";
 import ManageRequests from "./pages/ManageRequests";
@@ -16,6 +15,8 @@ import ScheduledJobs from "./pages/ScheduledJobs";
 import JobLogs from "./pages/JobLogs";
 import DeleteLogs from "./pages/DeleteLogs";
 import NotFound from "./pages/NotFound";
+import HomePage from "./pages/HomePage";
+import LoginPage from "./pages/Login_Page";
 
 const queryClient = new QueryClient();
 
@@ -26,13 +27,17 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Index />} />
+          <Route path="/" element={<LoginPage />} />
+          <Route path="/home-page" element={<HomePage />} />
           <Route path="/submit-request" element={<SubmitRequest />} />
           <Route path="/my-requests" element={<MyRequests />} />
           <Route path="/manage-requests" element={<ManageRequests />} />
           <Route path="/approval-inbox" element={<ApprovalInbox />} />
           <Route path="/provisioning-logs" element={<ProvisioningLogs />} />
-          <Route path="/firefighter-requests" element={<FirefighterRequests />} />
+          <Route
+            path="/firefighter-requests"
+            element={<FirefighterRequests />}
+          />
           <Route path="/analytics" element={<Analytics />} />
           <Route path="/scheduled-jobs" element={<ScheduledJobs />} />
           <Route path="/job-logs" element={<JobLogs />} />

@@ -1,5 +1,3 @@
-
-import React from "react";
 import { MainLayout } from "@/components/layout/MainLayout";
 import { Section } from "@/components/ui/Section";
 import { Tile } from "@/components/ui/Tile";
@@ -17,10 +15,10 @@ import {
   LogOut,
   PlusCircle,
   Trash2,
-  Users
+  Users,
 } from "lucide-react";
 
-const Index = () => {
+const HomePage = () => {
   return (
     <MainLayout>
       <div className="max-w-6xl mx-auto space-y-12 animate-fade-in">
@@ -33,11 +31,15 @@ const Index = () => {
           </h1>
 
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            Securely manage privileged access to production systems, track activities, and streamline approval workflows.
+            Securely manage privileged access to production systems, track
+            activities, and streamline approval workflows.
           </p>
         </div>
 
-        <Section title="Request Management" description="Submit and manage access requests">
+        <Section
+          title="Request Management"
+          description="Submit and manage access requests"
+        >
           <Tile
             title="Submit Request"
             description="Request new privileged access"
@@ -58,7 +60,10 @@ const Index = () => {
           />
         </Section>
 
-        <Section title="Approval Management" description="Review and approve access requests">
+        <Section
+          title="Approval Management"
+          description="Review and approve access requests"
+        >
           <Tile
             title="Approval Inbox"
             description="Review pending approvals"
@@ -68,7 +73,10 @@ const Index = () => {
           />
         </Section>
 
-        <Section title="Reporting & Analytics" description="View logs and analyze request data">
+        <Section
+          title="Reporting & Analytics"
+          description="View logs and analyze request data"
+        >
           <Tile
             title="Provisioning Logs"
             description="View provisioning logs"
@@ -89,7 +97,10 @@ const Index = () => {
           />
         </Section>
 
-        <Section title="Job & Logs Management" description="Manage scheduled jobs and logs">
+        <Section
+          title="Job & Logs Management"
+          description="Manage scheduled jobs and logs"
+        >
           <Tile
             title="Scheduled Jobs"
             description="View and manage scheduled jobs"
@@ -114,4 +125,4 @@ const Index = () => {
   );
 };
 
-export default Index;
+export default HomePage;
